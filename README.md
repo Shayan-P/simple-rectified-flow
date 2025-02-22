@@ -4,11 +4,15 @@
 python run.py flow_main
 ```
 
+<p align="center">
+
 ![flow_eval](static/flow_eval.png) | ![eval_frames](static/eval_frames.gif)
 :-------------------------:|:-------------------------:
 ![flow_sample](static/flow_sample.png) | ![sample_frames](static/sample_frames.gif)
 
 ![loss](static/loss.png)
+
+</p>
 
 ---
 
