@@ -6,11 +6,11 @@ python run.py flow_main
 
 <div style="display: flex; justify-content: space-between;">
     <img src="static/flow_eval.png" alt="flow_eval" style="width: 42%; height: auto;">
-    <img src="static/flow_sample.png" alt="flow_sample" style="width: 42%; height: auto;">
+    <img src="static/eval_frames.gif" alt="flow_eval" style="width: 42%; height: auto;">
 </div>
 
 <div style="display: flex; justify-content: space-between;">
-    <img src="static/eval_frames.gif" alt="flow_eval" style="width: 42%; height: auto;">
+    <img src="static/flow_sample.png" alt="flow_sample" style="width: 42%; height: auto;">
     <img src="static/sample_frames.gif" alt="flow_sample" style="width: 42%; height: auto;">
 </div>
 
