@@ -201,18 +201,34 @@ def main():
 
     model = FlowModel(dim=2).to(device)
 
-    dry_run = False
-    if dry_run:
-        res = model(torch.zeros(10, 2, device=device), torch.zeros(10, 1, device=device))
-        print(res.shape)
-        eval_model(model)
-        return
-
     dataset = Spiral2D(n=10000)
     goal_dist = torch.distributions.Normal(loc=torch.tensor([0.0, 0.0]), scale=torch.tensor([0.4, 0.4]))
 
     dist1_sampler = get_sampler_from_distribution(goal_dist, config.batch_size, device=device)
     dist2_sampler = get_sampler_from_dataset(dataset, config.batch_size, device=device)
+
+    train(dist1_sampler, dist2_sampler, model, t_samples=config.t_samples, iters=config.iters, plot_every=config.plot_every)
+
+
+def main_straight_experiment():
+    config = ConfigDict(dict(
+        batch_size=512, 
+        t_samples=20,
+        iters=2000,
+        plot_every=100,
+    ))
+    
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    model = FlowModel(dim=2).to(device)
+
+    dataset_1 = torch.randn(10000, 2, device=device)
+    dataset_2 = torch.randn(10000, 2, device=device)
+    dataset_1[:, 0] = -0.5
+    dataset_2[:, 0] = +0.5
+
+    dist1_sampler = get_sampler_from_dataset(dataset_1, config.batch_size, device=device)
+    dist2_sampler = get_sampler_from_dataset(dataset_2, config.batch_size, device=device)
 
     train(dist1_sampler, dist2_sampler, model, t_samples=config.t_samples, iters=config.iters, plot_every=config.plot_every)
 

@@ -13,6 +13,11 @@ def flow_main():
     import src.rectified_flow
     src.rectified_flow.main()
 
+def flow_main_straight_experiment():
+    invalidate_cache()
+    import src.rectified_flow
+    src.rectified_flow.main_straight_experiment()
+
 if __name__ == "__main__":
     funcs = {
         name: func
